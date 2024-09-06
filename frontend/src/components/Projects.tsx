@@ -1,51 +1,53 @@
-import { PinContainer } from "../ui/pin";
+import React from 'react';
+import { ProjectCard } from "../ui/projectCard";
 
-export function AnimatedPinDemo() {
+const projects = [
+  {
+    title: 'Project One',
+    description: 'This is a description of Project One.',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS'],
+    liveDemo: 'https://example.com/live-demo',
+    sourceCode: 'https://github.com/example/repo',
+    videoUrl: 'https://example.com/video.mp4',
+    screenshotUrl: 'https://example.com/screenshot.png',
+  },
+  {
+    title: 'Project Two',
+    description: 'This is a description of Project Two.',
+    techStack: ['Node.js', 'Express', 'MongoDB'],
+    liveDemo: 'https://example.com/live-demo',
+    sourceCode: 'https://github.com/example/repo',
+    videoUrl: 'https://example.com/video.mp4',
+    screenshotUrl: 'https://example.com/screenshot.png',
+  },
+  {
+    title: 'Project Three',
+    description: 'This is a description of Project Three.',
+    techStack: ['Vue', 'JavaScript', 'Vuetify'],
+    liveDemo: 'https://example.com/live-demo',
+    sourceCode: 'https://github.com/example/repo',
+    videoUrl: 'https://example.com/video.mp4',
+    screenshotUrl: 'https://example.com/screenshot.png',
+  },
+];
+
+export const ProjectList: React.FC = () => {
   return (
-    <div className="flex flex-row mt-24 justify-center">
-      <div className="h-[40rem] w-auto flex items-center justify-center">
-        <PinContainer title="School Management" href="">
-          <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[20rem] h-[20rem]">
-            <h3 className="max-w-xs pb-2 m-0 font-bold text-base text-slate-100">
-              SMS
-            </h3>
-            <div className="text-base m-0 p-0 font-normal">
-              <span className="text-slate-500">A school management system</span>
-            </div>
-            <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500 overflow-hidden">
-              <video
-                className="w-full h-full object-cover"
-                src="your-video-url.mp4"
-                autoPlay
-                muted
-                loop
-              />
-            </div>
-          </div>
-        </PinContainer>
-      </div>
-
-      <div className="h-[40rem] w-auto flex items-center justify-center ml-24">
-        <PinContainer title="School Management" href="">
-          <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[20rem] h-[20rem]">
-            <h3 className="max-w-xs pb-2 m-0 font-bold text-base text-slate-100">
-              SMS
-            </h3>
-            <div className="text-base m-0 p-0 font-normal">
-              <span className="text-slate-500">A school management system</span>
-            </div>
-            <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500 overflow-hidden">
-              <video
-                className="w-full h-full object-cover"
-                src="your-video-url.mp4"
-                autoPlay
-                muted
-                loop
-              />
-            </div>
-          </div>
-        </PinContainer>
+    <div className="container mx-auto p-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project, idx) => (
+          <ProjectCard
+            key={idx}
+            title={project.title}
+            description={project.description}
+            techStack={project.techStack}
+            liveDemo={project.liveDemo}
+            sourceCode={project.sourceCode}
+            videoUrl={project.videoUrl}
+            screenshotUrl={project.screenshotUrl}
+          />
+        ))}
       </div>
     </div>
   );
-}
+};

@@ -16,6 +16,9 @@ export const TechStackBand: React.FC = () => {
           <span className="text-xl font-bold text-gray-700 px-8">Next.js</span>
           <span className="text-xl font-bold text-gray-700 px-8">Docker</span>
           <span className="text-xl font-bold text-gray-700 px-8">CI/CD</span>
+          <span className="text-xl font-bold text-gray-700 px-8">Kubernetes</span>
+
+
 
           {/* Duplicate Content */}
           <span className="text-xl font-bold text-gray-700 px-8">React</span>
@@ -28,6 +31,8 @@ export const TechStackBand: React.FC = () => {
           <span className="text-xl font-bold text-gray-700 px-8">Next.js</span>
           <span className="text-xl font-bold text-gray-700 px-8">Docker</span>
           <span className="text-xl font-bold text-gray-700 px-8">CI/CD</span>
+          <span className="text-xl font-bold text-gray-700 px-8">Kubernetes</span>
+
         </div>
       </div>
     </div>
