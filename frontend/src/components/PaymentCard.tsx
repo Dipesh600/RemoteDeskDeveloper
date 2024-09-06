@@ -16,13 +16,13 @@ export const PricingCard: React.FC<PricingCardProps> = ({
   onClick,
 }) => {
   return (
-    <div className="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
+    <div className="max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
       <div className="px-6 py-8">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4 border-b pb-2">
           {plan}
         </h2>
         <div className="my-4">
-          <p className="text-5xl font-bold text-center text-blue-600">
+          <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-blue-600">
             {price}
           </p>
           <p className="text-sm text-gray-500 text-center">per project</p>
@@ -38,7 +38,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
             >
               {item.available ? (
                 <svg
-                  className="h-6 w-6 text-green-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-green-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -53,7 +53,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({
                 </svg>
               ) : (
                 <svg
-                  className="h-6 w-6 text-red-500"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-red-500"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -99,7 +99,7 @@ const ExamplePricing = () => {
   };
 
   return (
-    <div className="flex justify-center mt-10">
+    <div className="flex flex-col md:flex-row justify-center mt-10 gap-8">
       <PricingCard
         plan="Basic Plan"
         price="$29"

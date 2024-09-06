@@ -1,5 +1,6 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { ScheduleCallForm } from "./ScheduleCallForm";
+import { Switch } from "../ui/themebtn";
 
 export const Navbar = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -7,9 +8,10 @@ export const Navbar = () => {
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
+
   return (
     <>
-      <nav className="w-full h-16 bg-transparent backdrop-blur-2xl shadow-md border rounded-xl mt-2 bg-">
+      <nav className="w-full h-16 bg-transparent backdrop-blur-md shadow-lg border border-gray-200 rounded-lg mt-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
           <div className="flex-shrink-0">
             <a href="#" className="text-2xl font-bold text-gray-800">
@@ -17,43 +19,45 @@ export const Navbar = () => {
             </a>
           </div>
 
-          <div className="hidden md:flex space-x-4">
+          <div className="hidden md:flex items-center space-x-6">
             <a
               href="#home"
-              className="text-gray-800 transition-shadow duration-500 ease-in-out font-bold hover:shadow-xl hover:shadow-gray-300 px-3 py-2 rounded-lg"
+              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
             >
               Home
             </a>
             <a
               href="#about"
-              className="text-gray-800 transition-shadow duration-500 ease-in-out font-bold hover:shadow-xl hover:shadow-gray-300 px-3 py-2 rounded-lg"
+              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
             >
               About
             </a>
             <a
               href="#services"
-              className="text-gray-800 transition-shadow duration-500 ease-in-out font-bold hover:shadow-xl hover:shadow-gray-300 px-3 py-2 rounded-lg"
+              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
             >
               Services
             </a>
             <a
               href="#contact"
-              className="text-gray-800 transition-shadow duration-500 ease-in-out font-bold hover:shadow-xl hover:shadow-gray-300 px-3 py-2 rounded-lg"
+              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
             >
               Contact
             </a>
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center space-x-4">
+            <Switch />
             <button
               onClick={toggleForm}
-              className="px-6 py-2 bg-indigo-600 text-white rounded-full shadow-md hover:shadow-xl hover:shadow-gray-400 transition-shadow duration-500 ease-in-out"
+              className="px-6 py-2 bg-indigo-600 text-white rounded-full shadow-md hover:bg-indigo-700 transition-colors duration-300 ease-in-out"
             >
               Schedule Call
             </button>
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-4">
+            <Switch />
             <button className="text-gray-800 hover:text-indigo-600 focus:outline-none focus:text-indigo-600">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
