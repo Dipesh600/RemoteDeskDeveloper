@@ -20,3 +20,57 @@
     width: 200%; /* Make sure the width is twice the viewport width */
   }
   
+
+  /* WhyUsSection spotlight animation   */
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+  
+  .animate-spotlight {
+    animation: spotlight 2s ease 0.75s 1 forwards;
+  }
+  
+
+
+
+  /* infinite feedback scrool*/
+  .scroll-container {
+    display: flex; /* Align children in a row */
+    overflow: hidden; /* Hide the overflow */
+    position: relative; /* Establish a positioning context */
+    width: 100%; /* Make it take up full width */
+  }
+  
+  .scroll-content {
+    display: flex; /* Align items in a row */
+    gap: 1rem; /* Gap between items */
+    animation: scroll var(--animation-duration, 40s) linear infinite; /* Use the Tailwind-defined animation */
+  }
+  
+  .scroll-content > * {
+    flex: 0 0 auto; /* Prevent items from shrinking or growing */
+    margin-right: 1rem; /* Space between items */
+  }
+  
+  /* Optional styling for cards */
+  .scroll-card {
+    padding: 1.5rem;
+    background-color: var(--gray-100);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 200px; /* Set a minimum width for cards */
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .scroll-card:hover {
+    transform: translateY(-10px); /* Hover effect to lift cards */
+  }
+  

@@ -1,19 +1,29 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+import defaultTheme from "tailwindcss/defaultTheme";
+import colors from "tailwindcss/colors";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
+import { Config } from "tailwindcss";
 
-const colors = require("tailwindcss/colors");
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+const addVariablesForColors = ({ addBase, theme }: any) => {
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+  addBase({
+    ":root": newVars,
+  });
+};
+
+const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   darkMode: "class",
   theme: {
-    // rest of the code
     extend: {
       animation: {
-        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        "border-beam": "border-beam calc(var(--duration) * 1s) infinite linear", // Corrected by converting numbers to strings
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
       keyframes: {
         "shine-pulse": {
@@ -25,7 +35,22 @@ module.exports = {
           },
           to: {
             "background-position": "0% 0%",
+          },
         },
+        spotlight: {
+          "0%": {
+            opacity: "0",  // Converted to string
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: "1",  // Converted to string
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
         },
       },
       boxShadow: {
@@ -36,13 +61,4 @@ module.exports = {
   plugins: [addVariablesForColors],
 };
 
-function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
-
-  addBase({
-    ":root": newVars,
-  });
-}
+export default config;

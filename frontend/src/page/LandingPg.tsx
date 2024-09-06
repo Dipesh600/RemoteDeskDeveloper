@@ -22,6 +22,10 @@ export const LandingPage = () => {
         {/* Spacer Div */}
         <div className="mt-32"></div>
 
+
+
+
+
         {/* Project Section */}
         <div className="relative py-16 bg-white">
           <div className="relative text-center">
@@ -40,6 +44,8 @@ export const LandingPage = () => {
           <div className="mt-16">
             <TechStackBand />
           </div>
+
+
 
           <div className="mt-16 flex flex-row justify-center space-x-8 space-x-8">
             <div className="w-1/3 ">
