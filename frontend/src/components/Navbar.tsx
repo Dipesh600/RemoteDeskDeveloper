@@ -1,109 +1,68 @@
 import { useState } from "react";
-import { ScheduleCallForm } from "./ScheduleCallForm";
-import { Switch } from "../ui/themebtn";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/menu";
+import { cn } from "../lib/utils";
 
-export const Navbar = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
-  const toggleForm = () => {
-    setIsFormOpen(!isFormOpen);
-  };
-
+export function NavbarDemo() {
   return (
-    <>
-      <nav className="w-full h-16 bg-transparent backdrop-blur-md shadow-lg border border-gray-200 rounded-lg mt-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
-          <div className="flex-shrink-0">
-            <a href="#" className="text-2xl font-bold text-gray-800">
-              Logo
-            </a>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-6">
-            <a
-              href="#home"
-              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
-            >
-              About
-            </a>
-            <a
-              href="#services"
-              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
-            >
-              Services
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-800 font-semibold transition-transform transform hover:scale-105 px-3 py-2 rounded-lg"
-            >
-              Contact
-            </a>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <Switch />
-            <button
-              onClick={toggleForm}
-              className="px-6 py-2 bg-indigo-600 text-white rounded-full shadow-md hover:bg-indigo-700 transition-colors duration-300 ease-in-out"
-            >
-              Schedule Call
-            </button>
-          </div>
-
-          <div className="md:hidden flex items-center space-x-4">
-            <Switch />
-            <button className="text-gray-800 hover:text-indigo-600 focus:outline-none focus:text-indigo-600">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {isFormOpen && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out">
-          <div className="relative bg-white rounded-lg shadow-lg p-6 max-h-[80vh] w-full max-w-lg overflow-y-auto transform transition-all duration-300 ease-in-out translate-y-[-20px]">
-            <button
-              onClick={toggleForm}
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <ScheduleCallForm onClose={toggleForm} />
-          </div>
-        </div>
-      )}
-    </>
+    <div className="relative w-full flex items-center justify-center">
+      <Navbar className="top-2" />
+   
+    </div>
   );
-};
+}
+
+function Navbar({ className }: { className?: string }) {
+  const [active, setActive] = useState<string | null>(null);
+  return (
+    <div
+      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
+    >
+      <Menu setActive={setActive}>
+        <MenuItem setActive={setActive} active={active} item="Services">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/web-dev">Web Development</HoveredLink>
+            <HoveredLink href="/interface-design">UI/UX</HoveredLink>
+            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
+            <HoveredLink href="/branding">Projects</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Products">
+          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+            <ProductItem
+              title="Algochurn"
+              href="https://algochurn.com"
+              src="https://assets.aceternity.com/demos/algochurn.webp"
+              description="Prepare for tech interviews like never before."
+            />
+            <ProductItem
+              title="Tailwind Master Kit"
+              href="https://tailwindmasterkit.com"
+              src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+              description="Production ready Tailwind css components for your next project"
+            />
+            <ProductItem
+              title="Moonbeam"
+              href="https://gomoonbeam.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+            />
+            <ProductItem
+              title="Rogue"
+              href="https://userogue.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+            />
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Pricing">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/hobby">Hobby</HoveredLink>
+            <HoveredLink href="/individual">Individual</HoveredLink>
+            <HoveredLink href="/team">Team</HoveredLink>
+            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+          </div>
+        </MenuItem>
+      </Menu>
+    </div>
+  );
+}

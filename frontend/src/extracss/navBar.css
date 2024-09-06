@@ -1,0 +1,40 @@
+/* navbarAnimations.css */
+@keyframes outlineAnimation {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .text-outline {
+    position: relative;
+    font-size: 2rem; /* Adjust size as needed */
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(90deg, #4f46e5, #6ee7b7); /* Gradient effect */
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: inline-block;
+  }
+  
+  .text-outline::before {
+    content: 'RDD';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+    background: linear-gradient(90deg, #4f46e5, #6ee7b7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 2rem; /* Adjust size as needed */
+    font-weight: bold;
+    z-index: -1;
+    stroke: #4f46e5;
+    stroke-width: 1px;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: outlineAnimation 2s ease-out forwards;
+  }
+  
