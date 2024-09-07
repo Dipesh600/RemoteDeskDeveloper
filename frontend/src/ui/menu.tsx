@@ -67,7 +67,7 @@ export const Menu = ({
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
+      className="relative rounded-md border border-transparent dark:backdrop-blur-xl dark:backdrop-blur-xl backdrop-blur-xl shadow-input flex justify-center space-x-4 px-8 py-6 "
     >
       {children}
     </nav>
@@ -87,9 +87,12 @@ export const ProductItem = ({
 }) => {
   return (
     <a href={href} className="flex space-x-2">
-      <div
-        style={{ backgroundImage: `url(${src})` }}
-        className="w-[140px] h-[70px] flex-shrink-0 bg-cover bg-center rounded-md shadow-2xl"
+      <img
+        src={src}
+        width={140}
+        height={70}
+        alt={title}
+        className="flex-shrink-0 rounded-md shadow-2xl"
       />
       <div>
         <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
@@ -103,11 +106,11 @@ export const ProductItem = ({
   );
 };
 
-export const HoveredLink = ({ children, href }: { children: React.ReactNode; href: string }) => {
+export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <a
-      href={href}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black"
+      {...rest}
+      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
     >
       {children}
     </a>

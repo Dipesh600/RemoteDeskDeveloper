@@ -1,4 +1,4 @@
-import { NavbarDemo } from "../components/Navbar";
+import { NavbarDemo} from "../components/Navbar";
 import { Hero } from "../components/HeroSection";
 import { ProjectList } from "../components/Projects";
 import { TechStackBand } from "../ui/techband";
@@ -15,7 +15,7 @@ export const LandingPage = () => {
         </div>
 
         {/* Hero Section */}
-        <div className="w-full h-[calc(100vh-4rem)] mt-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg overflow-hidden">
+        <div className="w-full h-[calc(100vh-4rem)]0 rounded-xl shadow-lg overflow-hidden">
           <Hero />
         </div>
 
