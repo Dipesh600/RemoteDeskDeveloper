@@ -45,13 +45,7 @@ export const LandingPage = () => {
             <TechStackBand />
           </div>
 
-<<<<<<< HEAD
-
-
-          <div className="mt-16 flex flex-row justify-center space-x-8 space-x-8">
-=======
           <div className="mt-16 flex flex-row justify-center space-x-8">
->>>>>>> 58fefbfaa4c7fc17282399768eef17149b2064a1
             <div className="w-1/3 ">
               <PricingCard
                 plan="Student"
