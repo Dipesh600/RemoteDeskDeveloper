@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@heroicons/react": "^2.1.5",
     "@radix-ui/react-label": "^2.1.0",
     "@tabler/icons-react": "^3.14.0",
     "@types/three": "^0.167.2",

@@ -1,108 +1,100 @@
+import React from "react";
 import styled from "styled-components";
 
-export const Switch = () => {
+const Switch = () => {
   return (
     <StyledWrapper>
-      <div className="switch">
-        <input id="toggle" type="checkbox" />
-        <label className="toggle" htmlFor="toggle">
-          <i />
-        </label>
-      </div>
+      <label className="switch-button" htmlFor="switch">
+        <div className="switch-outer">
+          <input id="switch" type="checkbox" />
+          <div className="button">
+            <span className="button-toggle" />
+            <span className="button-indicator" />
+          </div>
+        </div>
+      </label>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .switch {
-    position: relative;
-    width: 80px; /* Adjusted width */
-    height: 30px; /* Adjusted height */
-    box-sizing: border-box;
-    padding: 3px;
-    background: #0d0d0d;
-    border-radius: 6px;
-    box-shadow:
-      inset 0 1px 1px 1px rgba(0, 0, 0, 0.5),
-      0 1px 0 0 rgba(255, 255, 255, 0.1);
+  .switch-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px; /* Container height */
   }
-  .switch input[type="checkbox"] {
+
+  .switch-button .switch-outer {
+    height: 20px; /* Adjusted height */
+    width: 40px; /* Adjusted width */
+    background: #252532;
+    border-radius: 12px; /* Adjusted radius */
+    box-shadow: inset 0px 5px 10px 0px #16151c, 0px 3px 6px -2px #403f4e;
+    border: 1px solid #32303e;
+    padding: 2px; /* Padding for inner elements */
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .switch-button .switch-outer input[type="checkbox"] {
+    opacity: 0;
     position: absolute;
-    z-index: 1;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    cursor: pointer;
   }
-  .switch input[type="checkbox"] + label {
+
+  .switch-button .switch-outer .button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     position: relative;
-    display: block;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: #1b1c1c;
-    border-radius: 3px;
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-    transition: all 0.5s ease-in-out;
   }
-  .switch input[type="checkbox"] + label:before {
-    content: "";
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    margin-left: 10px;
-    background: #fff;
+
+  .switch-button .switch-outer .button-toggle {
+    height: 16px; /* Adjusted size */
+    width: 16px; /* Adjusted size */
+    background: linear-gradient(#3b3a4e, #272733);
     border-radius: 50%;
-    vertical-align: middle;
-    box-shadow:
-      0 0 5px 2px rgba(165, 15, 15, 0.9),
-      0 0 3px 1px rgba(165, 15, 15, 0.9);
-    transition: all 0.5s ease-in-out;
-  }
-  .switch input[type="checkbox"] + label:after {
-    content: "";
-    display: inline-block;
-    width: 0;
-    height: 100%;
-    vertical-align: middle;
-  }
-  .switch input[type="checkbox"] + label i {
-    display: block;
     position: absolute;
     top: 50%;
-    left: 50%;
-    width: 2px; /* Adjusted width */
-    height: 16px; /* Adjusted height */
-    margin-top: -8px;
-    margin-left: -1px;
-    border-radius: 2px;
-    background: #0d0d0d;
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%);
+    transition: left 0.3s ease-in;
+    left: 2px; /* Initial position */
   }
-  .switch input[type="checkbox"] + label i:before,
-  .switch input[type="checkbox"] + label i:after {
-    content: "";
-    display: block;
+
+  .switch-button .switch-outer input[type="checkbox"]:checked + .button .button-toggle {
+    left: calc(100% - 18px); /* Adjusted position */
+  }
+
+  .switch-button .switch-outer .button-indicator {
+    height: 12px; /* Adjusted size */
+    width: 12px; /* Adjusted size */
+    border-radius: 50%;
+    border: 2px solid #ef565f;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 2px;
-    background: #0d0d0d;
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);
+    right: 4px; /* Positioned within the switch */
+    top: 50%;
+    transform: translateY(-50%);
   }
-  .switch input[type="checkbox"] + label i:before {
-    left: -5px;
+
+  @keyframes indicator {
+    30% {
+      opacity: 0;
+    }
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      border: 2px solid #60d480;
+    }
   }
-  .switch input[type="checkbox"] + label i:after {
-    left: 5px;
-  }
-  .switch input[type="checkbox"]:checked + label {
-    left: 50%;
-  }
-  .switch input[type="checkbox"]:checked + label:before {
-    box-shadow:
-      0 0 5px 2px rgba(15, 165, 70, 0.9),
-      0 0 3px 1px rgba(15, 165, 70, 0.9);
+
+  .switch-button .switch-outer input[type="checkbox"]:checked + .button .button-indicator {
+    animation: indicator 1s forwards;
   }
 `;
 

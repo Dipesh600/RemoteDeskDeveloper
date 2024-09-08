@@ -1,4 +1,4 @@
-import { Navbar } from "../components/Navbar";
+import { NavbarDemo} from "../components/Navbar";
 import { Hero } from "../components/HeroSection";
 import { ProjectList } from "../components/Projects";
 import { TechStackBand } from "../ui/techband";
@@ -10,12 +10,12 @@ export const LandingPage = () => {
     <>
       <div className="w-full bg-gray-50">
         {/* Navbar Section */}
-        <div className="w-full h-16 bg-white shadow-lg fixed top-0 left-0 z-50">
-          <Navbar />
+        <div className=" shadow-lg fixed top-0 left-0 z-50">
+          <NavbarDemo/>
         </div>
 
         {/* Hero Section */}
-        <div className="w-full h-[calc(100vh-4rem)] mt-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg overflow-hidden">
+        <div className="w-full h-[calc(100vh-4rem)]0 rounded-xl shadow-lg overflow-hidden">
           <Hero />
         </div>
 
@@ -45,9 +45,13 @@ export const LandingPage = () => {
             <TechStackBand />
           </div>
 
+<<<<<<< HEAD
 
 
           <div className="mt-16 flex flex-row justify-center space-x-8 space-x-8">
+=======
+          <div className="mt-16 flex flex-row justify-center space-x-8">
+>>>>>>> 58fefbfaa4c7fc17282399768eef17149b2064a1
             <div className="w-1/3 ">
               <PricingCard
                 plan="Student"
