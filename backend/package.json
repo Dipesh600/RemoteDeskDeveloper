@@ -20,6 +20,7 @@
   "dependencies": {
     "@prisma/client": "^5.19.0",
     "@prisma/extension-accelerate": "^1.1.0",
+    "@remotedeskdevelopers/ag": "^1.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "pg": "^8.12.0"

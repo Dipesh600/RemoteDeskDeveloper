@@ -1,23 +1,41 @@
-import { BackgroundBeamsWithCollision } from "../ui/collisions";
-import "../fonts/font.css"
+import { Cover } from "../ui/cover";
 
-export function Hero() {
+export function CoverDemo() {
   return (
-    <BackgroundBeamsWithCollision className="">
-      <h2 className="text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-black dark:text-white font-sans tracking-tight">
-        Wanna make cool websites ?
-        <div className="relative  mx-auto inline-block w-max [filter:drop-shadow(0px_1px_3px_rgba(27,_37,_80,_0.14))]">
-            
-          <div className="absolute left-0 top-[1px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]">
+    <div className="relative bg-white dark:bg-black overflow-hidden h-screen flex items-center justify-center">
+      {/* Sticky Note Image */}
+      <div
+        className="absolute z-0"
+        style={{
+          backgroundImage: `url("/stickynote.png")`,
+          width: "400px", // Adjust width to fit your design
+          height: "400px", // Adjust height to fit your design
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          top: "10%", // Adjust the vertical positioning as needed
+          right: "7%", // Adjust the horizontal positioning as needed
+          transform: "rotate(-10deg)", // Optional: Rotate the sticky note for a playful effect
+        }}
+      />
 
-            <span className="amaranth-regular-italic font-extrabold">Remote Desk Developers.</span>
-          </div>
-          <div className="relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4">
-            <span className="amaranth-regular-italic font-extrabold">Remote Desk Developers. </span>
-          </div>
-          
+      {/* Main Content Container */}
+      <div className="text-center relative z-10 max-w-2xl mx-auto px-4">
+        {/* Main Heading */}
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-neutral-900 dark:text-white leading-tight">
+          Wanna make cool websites?
+        </h1>
+
+        {/* Subheading with animation */}
+        <div className="relative inline-block mt-4">
+          <Cover className="text-4xl lg:text-5xl font-extrabold text-neutral-800 dark:text-white">
+            Remote Desk Developers.
+          </Cover>
         </div>
-      </h2>
-    </BackgroundBeamsWithCollision>
+
+        {/* Call-to-action Button */}
+        
+      </div>
+    </div>
   );
 }
