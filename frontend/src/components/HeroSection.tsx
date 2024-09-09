@@ -14,7 +14,7 @@ export function CoverDemo() {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           top: "10%", // Adjust the vertical positioning as needed
-          right: "10%", // Adjust the horizontal positioning as needed
+          right: "7%", // Adjust the horizontal positioning as needed
           transform: "rotate(-10deg)", // Optional: Rotate the sticky note for a playful effect
         }}
       />
@@ -34,11 +34,7 @@ export function CoverDemo() {
         </div>
 
         {/* Call-to-action Button */}
-        <div className="mt-10">
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-            Get Started
-          </button>
-        </div>
+        
       </div>
     </div>
   );
