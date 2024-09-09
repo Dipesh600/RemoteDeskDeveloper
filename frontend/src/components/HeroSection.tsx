@@ -13,7 +13,7 @@ export function CoverDemo() {
           backgroundSize: "contain",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          top: "10%", // Adjust the vertical positioning as needed
+          top: "17%", // Adjust the vertical positioning as needed
           right: "7%", // Adjust the horizontal positioning as needed
           transform: "rotate(-10deg)", // Optional: Rotate the sticky note for a playful effect
         }}
