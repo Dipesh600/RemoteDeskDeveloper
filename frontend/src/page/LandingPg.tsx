@@ -1,5 +1,5 @@
 import { NavbarDemo} from "../components/Navbar";
-import { Hero } from "../components/HeroSection";
+import { CoverDemo } from "../components/HeroSection";
 import { ProjectList } from "../components/Projects";
 import { TechStackBand } from "../ui/techband";
 import { PricingCard } from "../components/PaymentCard";
@@ -10,13 +10,13 @@ export const LandingPage = () => {
     <>
       <div className="w-full bg-gray-50">
         {/* Navbar Section */}
-        <div className=" shadow-lg fixed top-0 left-0 z-50">
+        <div className="shadow-lg fixed top-0 left-0 z-50">
           <NavbarDemo/>
         </div>
 
         {/* Hero Section */}
-        <div className="w-full h-[calc(100vh-4rem)]0 rounded-xl shadow-lg overflow-hidden">
-          <Hero />
+        <div className="w-full h-[calc(100vh-4rem)]0 rounded-xl  overflow-hidden">
+          <CoverDemo />
         </div>
 
         {/* Spacer Div */}

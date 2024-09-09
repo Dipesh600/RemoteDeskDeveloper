@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { HoveredLink, Menu, MenuItem } from "../ui/menu";
-import { cn } from "../lib/utils";
 import Switch from "../ui/themebtn";
+import { HiMenuAlt3, HiX } from "react-icons/hi"; // For menu icons
 
 export function NavbarDemo() {
   return (
@@ -12,62 +11,98 @@ export function NavbarDemo() {
 }
 
 function Navbar({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <div className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}>
-      <Menu setActive={setActive} >
-        <MenuItem setActive={setActive} active={active} item="Services">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Web Development</HoveredLink>
-            <HoveredLink href="/interface-design">UI/UX</HoveredLink>
-            <HoveredLink href="/seo">SEO</HoveredLink>
-            <HoveredLink href="/video-editing">Video Editing</HoveredLink>
-            <HoveredLink href="/video-editing">Chrome Extensions</HoveredLink>
-            <HoveredLink href="/assignments">College Assignments</HoveredLink>
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Work">
-          {/* Simplified grid of company/project logos */}
-          {/* in this later use the screenshots of ur own projects  */}
-          <div className="grid grid-cols-3 gap-6 p-4">
-            <div className="text-center">
-              <img
-                src="https://assets.aceternity.com/demos/algochurn.webp"
-                alt="AlgoChurn Logo"
-                className="w-16 h-16 mx-auto rounded-full"
-              />
-              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Project 1</p>
-            </div>
-            <div className="text-center">
-              <img
-                src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                alt="Tailwind Kit Logo"
-                className="w-16 h-16 mx-auto rounded-full"
-              />
-              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Project 2</p>
-            </div>
-            <div className="text-center">
-              <img
-                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                alt="Rogue Logo"
-                className="w-16 h-16 mx-auto rounded-full"
-              />
-              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Project 3</p>
-            </div>
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Pricing">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Student Corner</HoveredLink>
-            <HoveredLink href="/individual">Commercial Corner</HoveredLink>
-            <HoveredLink href="/team">Small Projects</HoveredLink>
-          </div>
-        </MenuItem>
-        <div className="ml24">
+    <div className={`fixed top-0 inset-x-0 max-w-6xl mx-auto z-50 p-4 backdrop-blur-xl shadow-md rounded-lg ${className}`}>
+      <nav className="flex justify-between items-center">
+        {/* Agency Logo */}
+        <a href="/" className="text-2xl font-bold text-gray-800 amaranth-regular-italic">
+          Remote Desk Developers
+        </a>
+
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex space-x-8">
+        <a
+            href="/"
+            className="py-2 px-6 bg-gray-100 text-gray-900 font-medium hover:bg-gray-300 rounded-lg shadow"
+          >
+            Home
+          </a>
+          <a
+            href="/projects"
+            className="py-2 px-6 bg-gray-100 text-gray-900 font-medium hover:bg-gray-300 rounded-lg shadow"
+          >
+            Projects
+          </a>
+          <a
+            href="/contact"
+            className="py-2 px-6 bg-gray-100 text-gray-900 font-medium hover:bg-gray-300 rounded-lg shadow"
+          >
+            Contact
+          </a>
+        </div>
+
+        {/* Mobile Hamburger Icon */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-gray-800 hover:text-blue-600 focus:outline-none"
+          >
+            {isMenuOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
+          </button>
+        </div>
+
+        {/* Theme Switch for Desktop */}
+        <div className="hidden md:flex">
           <Switch />
         </div>
-      </Menu>
-    </div>
+      </nav>
 
+      {/* Mobile Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-white text-gray-800 p-6 shadow-lg transform ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out z-40 md:hidden`}
+      >
+        {/* Close Button */}
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          className="absolute top-4 right-4 text-gray-800"
+        >
+          <HiX size={28} />
+        </button>
+
+        {/* Sidebar Menu Items */}
+        <div className="flex flex-col space-y-6 mt-12">
+          <a
+            href="/"
+            className="block text-lg font-medium hover:text-blue-600 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </a>
+          <a
+            href="/projects"
+            className="block text-lg font-medium hover:text-blue-600 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Projects
+          </a>
+          <a
+            href="/contact"
+            className="block text-lg font-medium hover:text-blue-600 transition-colors"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact
+          </a>
+        </div>
+
+        {/* Theme Switch for Mobile */}
+        <div className="mt-8">
+          <Switch />
+        </div>
+      </div>
+    </div>
   );
 }
