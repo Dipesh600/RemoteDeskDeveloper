@@ -3,19 +3,20 @@ import { Cover } from "../ui/cover";
 export function CoverDemo() {
   return (
     <div className="relative bg-white dark:bg-black overflow-hidden h-screen flex items-center justify-center">
-      {/* Sticky Note Image */}
+      {/* Sticky Note Image (Visible only on large screens) */}
       <div
-        className="absolute z-0"
+        className="absolute z-0 hidden lg:block" // Hidden on small screens, visible on large screens
         style={{
-          backgroundImage: `url("/stickynote.png")`,
-          width: "400px", // Adjust width to fit your design
-          height: "400px", // Adjust height to fit your design
+          backgroundImage: `url("/outliedarrow.png")`,
+          width: "200px", // Adjust width to fit your design
+          height: "200px", // Adjust height to fit your design
           backgroundSize: "contain",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          top: "17%", // Adjust the vertical positioning as needed
-          right: "7%", // Adjust the horizontal positioning as needed
-          transform: "rotate(-10deg)", // Optional: Rotate the sticky note for a playful effect
+          top: "33%", // Adjust the vertical positioning as needed
+          right: "16%",
+          left: "60%", // Adjust the horizontal positioning as needed
+          transform: "rotate(2deg)", // Optional: Rotate the sticky note for a playful effect
         }}
       />
 
@@ -34,7 +35,6 @@ export function CoverDemo() {
         </div>
 
         {/* Call-to-action Button */}
-        
       </div>
     </div>
   );
