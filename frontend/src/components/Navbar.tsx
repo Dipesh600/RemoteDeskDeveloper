@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Switch from "../ui/themebtn";
-import { HiMenuAlt3, HiX } from "react-icons/hi"; // For menu icons
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { FaCaretDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 export function NavbarDemo() {
   return (
@@ -12,6 +14,8 @@ export function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false); // For dropdown
+  const navigate = useNavigate(); // Initialize navigate function
 
   return (
     <div className={`fixed top-0 inset-x-0 max-w-6xl mx-auto z-50 p-4 backdrop-blur-xl shadow-md rounded-lg ${className}`}>
@@ -23,7 +27,7 @@ function Navbar({ className }: { className?: string }) {
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex space-x-8">
-        <a
+          <a
             href="/"
             className="py-2 px-6 bg-gray-100 text-gray-900 font-medium hover:bg-gray-300 rounded-lg shadow"
           >
@@ -35,12 +39,39 @@ function Navbar({ className }: { className?: string }) {
           >
             Projects
           </a>
-          <a
-            href="/contact"
-            className="py-2 px-6 bg-gray-100 text-gray-900 font-medium hover:bg-gray-300 rounded-lg shadow"
-          >
-            Contact
-          </a>
+
+          {/* Contact with Dropdown */}
+          <div className="relative">
+            <button
+              className="py-2 px-6 bg-gray-100 text-gray-900 font-medium hover:bg-gray-300 rounded-lg shadow flex items-center"
+              onClick={() => setIsContactDropdownOpen(!isContactDropdownOpen)}
+            >
+              Contact <FaCaretDown className="ml-2" />
+            </button>
+            {isContactDropdownOpen && (
+              <div className="absolute mt-2 bg-white shadow-lg rounded-lg p-4">
+                <a
+                  href=""
+                  className="block text-gray-700 hover:bg-gray-100 p-2 rounded-md"
+                  onClick={() => navigate("/project-template")}
+                >
+                  Student's Corners
+                </a>
+                <a
+                  href="/contact/support"
+                  className="block text-gray-700 hover:bg-gray-100 p-2 rounded-md"
+                >
+                  Commercial Corner
+                </a>
+                <a
+                  href="/contact/career"
+                  className="block text-gray-700 hover:bg-gray-100 p-2 rounded-md"
+                >
+                  Support
+                </a>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Mobile Hamburger Icon */}
@@ -89,13 +120,43 @@ function Navbar({ className }: { className?: string }) {
           >
             Projects
           </a>
-          <a
-            href="/contact"
-            className="block text-lg font-medium hover:text-blue-600 transition-colors"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Contact
-          </a>
+
+          {/* Contact with Dropdown for Mobile */}
+          <div>
+            <button
+              className="block text-lg font-medium flex justify-between items-center w-full"
+              onClick={() => setIsContactDropdownOpen(!isContactDropdownOpen)}
+            >
+              Contact <FaCaretDown className="ml-2" />
+            </button>
+            {isContactDropdownOpen && (
+              <div className="mt-2">
+                <a
+                  className="block text-lg font-medium hover:text-blue-600 transition-colors pl-4"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate("/project-template");
+                  }}
+                >
+                  General Inquiry
+                </a>
+                <a
+                  href="/contact/support"
+                  className="block text-lg font-medium hover:text-blue-600 transition-colors pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Support
+                </a>
+                <a
+                  href="/contact/career"
+                  className="block text-lg font-medium hover:text-blue-600 transition-colors pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Career Opportunities
+                </a>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Theme Switch for Mobile */}
