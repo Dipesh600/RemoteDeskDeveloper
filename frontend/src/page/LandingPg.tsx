@@ -16,35 +16,11 @@ export const LandingPage = () => {
           <NavbarDemo />
         </div>
 
-<<<<<<< HEAD
-        {/* Hero Section */}
-        <div className="w-full h-[calc(100vh-4rem)]0 rounded-xl  overflow-hidden">
-          <CoverDemo />
-        </div>
-
-        {/* Spacer Div */}
-        <div className="mt-32"></div>
-
-
-
-
-
-        {/* Project Section */}
-        <div className="relative py-16 bg-white">
-          <div className="relative text-center">
-            <h2 className="text-gray-300 font-extrabold text-5xl amaranth-regular-italic absolute inset-x-0 top-1/2 transform -translate-y-1/2">
-              Our Work
-            </h2>
-            <h2 className="text-gray-800 font-extrabold text-5xl amaranth-regular-italic relative z-10">
-              Our Work
-            </h2>
-=======
         {/* Main Content */}
         <div className="flex-grow">
           {/* Hero Section */}
           <div className="w-full h-[calc(100vh-4rem)] rounded-xl overflow-hidden">
             <CoverDemo />
->>>>>>> fdfb567e21d0233cf993bc3508bfb0e2c06af3f8
           </div>
 
           {/* Spacer Div */}
